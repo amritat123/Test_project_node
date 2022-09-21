@@ -36,6 +36,29 @@ modelSchema.pre('save', function (next) {
 });
 // password validation. 
 modelSchema .methods.validateToken = async function(token , cb) {
+    bcrypt.compare(candidatePassword , this.password, async function (err, isMatch) {
+        
+        // Verifying jwt token
+        const decode = jwt.verify(token, config.jwt.secretKey);
+        req . userId = decode.sub;
 
-}
+        try {
+            const cuser = await masterAdminModel.findById(decode.sub);
+        }
+        // wihle verfiying the token if we get new error
+        catch (e) {
+            throw new Error ('User does not exits')
+        };
+
+        if (err) {
+            return cb (err);
+        }
+        cb(null , isMatch);
+
+    });
+
+};
+
+const masterAdminModel= model('masterAdmin', modelSchema);
+module.exports = masterAdminModel;
 
