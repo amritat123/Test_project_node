@@ -39,7 +39,7 @@ modelSchema .methods.validateToken = async function(token , cb) {
     bcrypt.compare(candidatePassword , this.password, async function (err, isMatch) {
         
         // Verifying jwt token
-        const decode = jwt.verify(token, config.jwt.secretKey);
+        const decode = jwt.verify(token,config.jwt.secretKey);
         req . userId = decode.sub;
 
         try {
