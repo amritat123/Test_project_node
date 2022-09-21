@@ -15,8 +15,8 @@ const modelSchema = new Schema({
             type : Date,
             default: Date.now()
         }
-    }]
+    }],
 },{ timestamps:false });
 
-const newsHitModel = model('newsHit' , modelSchema);
+const newsHitModel = model('news_hit' , modelSchema);
 module.exports = newsHitModel;

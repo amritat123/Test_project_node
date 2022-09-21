@@ -10,7 +10,7 @@ const modelSchema = new Schema ({
         ref: 'author'
     },
     image: String,
-    thumbNail:String,
+    thumbNail: String,
 
     title: {
         type : String
@@ -31,9 +31,9 @@ const modelSchema = new Schema ({
         type: Date,
         default:Date.now()
     },
-    viewCount: {
+    viewsCount: {
         type: Number,
-        default:0
+        default: 0
     },
     status : {
         type: Boolean,
